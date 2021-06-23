@@ -10,6 +10,8 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - laradock_backend
 
   broker:
     image: confluentinc/cp-kafka:6.2.0
@@ -32,6 +34,8 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_JMX_PORT: 9101
       KAFKA_JMX_HOSTNAME: localhost
+    networks:
+      - laradock_backend
 
   schema-registry:
     image: confluentinc/cp-schema-registry:6.2.0
@@ -142,3 +146,7 @@ services:
       KAFKA_REST_BOOTSTRAP_SERVERS: 'broker:29092'
       KAFKA_REST_LISTENERS: "http://0.0.0.0:8082"
       KAFKA_REST_SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
+
+networks:    
+  laradock_backend:
+    external: true
