@@ -8,3 +8,9 @@ command:
 curl --silent --output docker-compose.yml \
 https://raw.githubusercontent.com/confluentinc/cp-all-in-one/6.2.0-post/cp-all-in-one-community/docker-compose.yml
 ```
+
+## 2. Start docker in detached mode
+command:
+```
+docker-compose up -d
+```
